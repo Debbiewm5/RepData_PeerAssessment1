@@ -34,8 +34,8 @@ data <- read.table('activity.csv', header=TRUE, sep=",")
 
 
 ```r
-total.steps <- tapply(data$steps, data$date, FUN=sum, na.rm=TRUE)
-plot1 <- qplot(total.steps,binwidth=1000) + geom_histogram(aes(fill=..count..)) +
+total.steps <- tapply(data$steps, data$date, FUN=sum)
+plot1 <- qplot(total.steps,binwidth=1000) + geom_histogram(aes(fill= ..count..)) +
            labs(title="Histogram of steps taken each day",
                x="Number of Steps per Day", y="Number of times in a day(count)") + theme_bw()
 print(plot1)
@@ -56,11 +56,11 @@ median(total.steps, na.rm=TRUE)
 ```
 
 ```
-## [1] 9354
+## [1] 10766
 ```
 
 ```
-## [1] 10395
+## [1] 10765
 ```
 
 ## Average daily activity pattern
