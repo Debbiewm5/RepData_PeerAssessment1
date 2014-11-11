@@ -131,9 +131,14 @@ filled.data$steps <- mapply(fill.value, filled.data$steps, filled.data$interval)
 
 ```r
 total.steps <- tapply(filled.data$steps, filled.data$date, FUN=sum)
-plot3 <- qplot(total.steps, binwidth=1000) +
-            labs (title="Histogram of total number of steps taken per day")
-                  print(plot2)
+plot3 <- qplot(total.steps, binwidth=1000) + geom_histogram(aes(fill=..count..)) +
+            labs (title="Histogram of total number of steps taken per day", 
+                 x="Number of Steps per Day", y="Number of times in a day(count)") + theme_bw()
+                  print(plot3)
+```
+
+```
+## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
 ![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
